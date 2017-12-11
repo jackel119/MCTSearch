@@ -35,14 +35,25 @@ class MonteCarlo(object):
         if len(legal) == 1:
             return legal[0]
 
+        moves_states_initial = [(p, self.board.next_state(state, p)) for p in legal]
+        moves_states = moves_states_initial[:]
+        for move, state in moves_states_initial:
+            if self.board.winner([state]) == player:
+                return move
+            else:
+                for op_move, two_states_ahead in [(m, self.board.next_state(state, m)) for m in self.board.legal_plays([state])]:
+                        if self.board.winner([two_states_ahead]) == (player * -1):
+                            print("Move leads to a certain loss")
+                            moves_states.remove((move, state))
+                            
+
         start = datetime.utcnow()
         games = 0
         while (datetime.utcnow() - start) < self.calc_time:
-            print(datetime.utcnow() - start, "||| ", self.calc_time)
+            #print(datetime.utcnow() - start, "||| ", self.calc_time)
             self.run_simulation()
             games += 1
         
-        moves_states = [(p, self.board.next_state(state, p)) for p in legal]
         
         print("Games played:", games, "\nTime Elapsed: ", datetime.utcnow() - start)
         percent_wins, move = max(
