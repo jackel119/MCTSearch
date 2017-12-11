@@ -43,14 +43,15 @@ class MonteCarlo(object):
             else:
                 for op_move, two_states_ahead in [(m, self.board.next_state(state, m)) for m in self.board.legal_plays([state])]:
                         if self.board.winner([two_states_ahead]) == (player * -1):
-                            print("Move leads to a certain loss")
+                            print("Move =:", move, "leads to a certain loss")
                             moves_states.remove((move, state))
+                            break
                             
 
         start = datetime.utcnow()
         games = 0
         while (datetime.utcnow() - start) < self.calc_time:
-            #print(datetime.utcnow() - start, "||| ", self.calc_time)
+            print(datetime.utcnow() - start, "||| ", self.calc_time)
             self.run_simulation()
             games += 1
         

@@ -53,7 +53,7 @@ def self_play(mc, b):
 
 if __name__ == '__main__':
     b = Board()
-    mc = MonteCarlo(b, seconds = 3)
+    mc = MonteCarlo(b, seconds = 0.3)
     winner, hist = self_play(mc, b)
     for state in hist:
         print("")

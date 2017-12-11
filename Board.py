@@ -81,10 +81,10 @@ class Board(object):
         for i in state:
             print(i)
 
-b = Board()
-state = ((1,1,-1),
-         (1,1,0),
-         (0,0,1))
-b.show(state)
-sh = [state]
-print(b.winner(sh))
+# b = Board()
+# state = ((1,1,-1),
+#          (1,1,0),
+#          (0,0,1))
+# b.show(state)
+# sh = [state]
+# print(b.winner(sh))
