@@ -2,7 +2,11 @@ from Board import Board
 from MonteCarlo import MonteCarlo
 
 def main():
-    players = {-1 : "Human", 1: 'AI'}
+    print("Would you like to go 1st or 2nd?\n    Go 1st: 1\n    Go 2nd: 2")
+    if int(input()) == 2:
+        players = {-1 : "Human", 1: 'AI'}
+    else:
+        players = {1 : "Human", -1: 'AI'}
     board = Board()
     mc = MonteCarlo(board, seconds = 3)
     game_history = []

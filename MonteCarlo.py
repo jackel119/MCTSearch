@@ -51,7 +51,7 @@ class MonteCarlo(object):
         start = datetime.utcnow()
         games = 0
         while (datetime.utcnow() - start) < self.calc_time:
-            print(datetime.utcnow() - start, "||| ", self.calc_time)
+            #print(datetime.utcnow() - start, "||| ", self.calc_time)
             self.run_simulation()
             games += 1
         
